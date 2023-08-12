@@ -61,37 +61,6 @@ def evaluate_metrics(model, dataloader, device='cuda'):
 
     return roc_auc , f1 , precision , recall , accuracy , mean_cos_sim_label_1 , mean_cos_sim_label_0
 
-
-import torchvision.models as models
-class Dis(nn.Module):
-    def __init__(self, num_classes,num_features=config.FEATURE_DIM):
-        super(Dis, self).__init__()
-        self.num_classes = num_classes
-        resnet50 = models.resnet50(pretrained=True)
-        # self.resnet50.fc = nn.Identity()
-        # Remove the last fully connected layer and the average pooling layer
-        modules = list(resnet50.children())[:-2]
-        self.resnet50_features = nn.Sequential(*modules)
-        self.embed_layer = nn.Linear(2048, num_features)  # 2048 is the number of features from the ResNet-50 output
-        self.fc = nn.Linear(num_features, num_classes)
-        self.prelu = nn.PReLU()
-        
-        # self.attn_layer = SelfAttentionLayer(in_dim=num_features,hidden_dim=num_features//2)
-    def make_grad(self,model, requires_grad=True):
-        for param in model.parameters():
-            param.requires_grad = requires_grad
-
-    def forward(self, x):
-        with torch.no_grad():
-            x = self.resnet50_features(x)
-
-        x = F.adaptive_avg_pool2d(x, (1, 1))
-        x = torch.flatten(x, 1)
-        # _features = self.prelu(self.embed_layer(x))
-        # y = self.fc(F.dropout(_features,p=0.4))
-        return  x , x
-    
-
 # # import utils
 # transform = transforms.Compose([
 #     transforms.Resize((128, 128)),
