@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ca7d9da84a74cc9f1a85f0eb812d853e11a9db46
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -228,6 +231,8 @@ class Trainer:
         print("Testset: Mean Cosine Similarity for label 0:", test_mean_cos_sim_label_0)
 
         return self.avg_meter
+<<<<<<< HEAD
+=======
 =======
 import torch
 import torch.nn as nn
@@ -608,3 +613,4 @@ class Trainer:
 # x = F.adaptive_avg_pool2d(x, (1, 1))
 # x = torch.flatten(x, 1)
 >>>>>>> 03dc744fd576ee5506938c3e230e3f73e0db4d51
+>>>>>>> ca7d9da84a74cc9f1a85f0eb812d853e11a9db46
