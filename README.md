@@ -48,4 +48,8 @@ These configurations showcase the impact of diverse strategies on the ROC-AUC sc
 
 Feel free to copy and paste this content into your GitHub README as desired.
 
+## t-SNE Visualization of Classes
 
+![t-SNE Visualization](assets/Figure_Hybrid.png)
+
+The image above showcases the t-SNE visualization of classes, offering insights into the distribution of your data
